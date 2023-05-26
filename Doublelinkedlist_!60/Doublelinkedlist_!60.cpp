@@ -41,8 +41,8 @@ void DoubleLinkedList::addNode() {
     newNode->name = nm;                     //Step 2
 
     /*Insert a node on the beginning of a double linked list*/
-    if (START == NULL ||nim <= START -> noMhs)   {
-        if (START != NULL && nim == START -> noMhs)
+    if (START == NULL || nim <= START->noMhs) {
+        if (START != NULL && nim == START->noMhs)
         {
             cout << "\nDuplicate number not allowed" << endl;
             return;
@@ -61,8 +61,8 @@ void DoubleLinkedList::addNode() {
         previous = current;         //Step 1.d
         current = current->next;    //Step 1.e
     }
-    
-    if (current->next!=NULL &&nim == current->next->noMhs)
+
+    if (current->next != NULL && nim == current->next->noMhs)
     {
         cout << "\nDuplicate roll number not allowed" << endl;
         return;
@@ -70,11 +70,11 @@ void DoubleLinkedList::addNode() {
 
     newNode->next = current->next;  //Step 4
     newNode->prev = current;        //Step 5
-    if (current->next!=NULL)
+    if (current->next != NULL)
     {
         current->next->prev = newNode;          //Step6
     }
-    current->next=newNode           //Step 7
+    current->next = newNode;           //Step 7
 }
 
 bool DoubleLinkedList::search(int rollNo, Node** previous, Node** current) {
@@ -116,7 +116,7 @@ bool DoubleLinkedList::listEmpty() {
 void DoubleLinkedList::transverse() {
     if (listEmpty())
     {
-        cout << :"\nList is empty" << endl;
+        cout << "\nList is empty" << endl;
     }
     else
     {
@@ -129,7 +129,26 @@ void DoubleLinkedList::transverse() {
     }
 }
 
-
+void DoubleLinkedList::revtransverse() {
+    if (listEmpty())
+    {
+        cout << "\nList is empty" << endl;
+    }
+    else
+    {
+        cout << "\nRecords in descending order of roll nuumbers are: " << endl;
+        Node* currentNode = START;
+        while (currentNode->next != NULL)
+        {
+            currentNode = currentNode->next;
+        }
+        while (currentNode != NULL)
+        {
+            cout << currentNode->noMhs << " " << currentNode->name << endl;
+            currentNode = currentNode->prev;
+        }
+    }
+}
 int main()
 {
     std::cout << "Hello World!\n";
